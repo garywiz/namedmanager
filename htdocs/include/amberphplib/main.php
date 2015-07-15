@@ -90,8 +90,14 @@ function log_write($type, $category, $content)
 
 }
 
+/*  Returns the value of an array, or a default. */
 
-
+function withdefault($var, $key, $default) {
+    if (isset($var[$key])) {
+        return $var[$key];
+    }
+    return $default;
+}
 
 /*
 	INCLUDE MAJOR AMBERDPHPLIB COMPONENTS

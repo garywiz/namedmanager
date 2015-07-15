@@ -349,6 +349,8 @@ class bind_api extends soap_api
 			return 0;
 		}
 
+        $domains_old = array();
+
 		foreach ($file as $line)
 		{
 			// fetch the old domains
@@ -626,6 +628,8 @@ class bind_api extends soap_api
 		fwrite($fh, "; HOST RECORDS\n");
 		fwrite($fh, "\n");
 
+        $found_localhost = false;
+
 		foreach ($this->records as $record)
 		{
 
@@ -661,6 +665,9 @@ class bind_api extends soap_api
 							$record["record_name"] .= ".";	// append . as FQDN
 						}
 
+                        if ($record["record_name"] == "localhost") {
+                            $found_localhost = true;
+                        }
 					break;
 					
 					

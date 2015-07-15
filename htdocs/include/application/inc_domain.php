@@ -254,12 +254,12 @@ class domain
 		$this->sql_obj->execute();
 		$this->sql_obj->fetch_array();
 
-		foreach ($this->sql_obj->data as $data_group)
-		{
-			$this->data_groups[ $data_group["id_domain"] ][] = $data_group["id_group"];
-		}
-
-
+        if ($this->sql_obj->data) {
+            foreach ($this->sql_obj->data as $data_group)
+            {
+                $this->data_groups[ $data_group["id_domain"] ][] = $data_group["id_group"];
+            }
+        }
 
 		// Fetch all the domains
 		$this->sql_obj->string	= "SELECT * FROM `dns_domains`";

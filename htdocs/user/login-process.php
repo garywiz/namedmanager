@@ -12,7 +12,7 @@ require("../include/amberphplib/main.php");
 
 // erase any data - gets rid of stale errors and user sessions.
 
-if ($_SESSION["user"]["debug"] == "on")
+if (withdefault($_SESSION["user"], "debug", "off") == "on")
 {
 	$_SESSION["error"] = array();
 	$_SESSION["user"] = array();
@@ -46,7 +46,7 @@ else
 	$password	= security_form_input("/^\S*$/", "password_namedmanager", 1, "Please enter a password.");
 
 
-	if ($_SESSION["error"]["message"])
+	if (isset($_SESSION["error"]["message"]))
 	{
 		// errors occured
 		header("Location: ../index.php?page=user/login.php");
@@ -64,7 +64,7 @@ else
 		// login succeded
 
 		// if user has been redirected to login from a previous page, lets take them to that page.
-		if ($_SESSION["login"]["previouspage"])
+		if (isset($_SESSION["login"]["previouspage"]))
 		{	
 			header("Location: ../index.php?" . $_SESSION["login"]["previouspage"] . "");
 			$_SESSION["login"] = array();

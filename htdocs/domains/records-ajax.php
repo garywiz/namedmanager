@@ -469,7 +469,7 @@ class page_output
 			if (in_array($record["type"], $dns_record_types))
 			{
 				// special ID rules
-				if ($record["id"])
+				if (isset($record["id"]))
 				{
 					$this->obj_form->structure["record_custom_". $i ."_id"]["defaultvalue"]		= $record["id"];
 				}
@@ -543,6 +543,12 @@ class page_output
 		// hidden
 		$structure = NULL;
 		$structure["fieldname"] 	= "id_domain";
+		$structure["type"]		= "hidden";
+		$structure["defaultvalue"]	= $this->obj_domain->id;
+		$this->obj_form->add_input($structure);
+		
+		$structure = NULL;
+		$structure["fieldname"] 	= "record_custom_id_domain";
 		$structure["type"]		= "hidden";
 		$structure["defaultvalue"]	= $this->obj_domain->id;
 		$this->obj_form->add_input($structure);
@@ -728,7 +734,7 @@ if ($page_valid == 1)
 	Draw messages
 */
 
-if ($_SESSION["error"]["message"])
+if (isset($_SESSION["error"]["message"]))
 {
 	print "<tr><td colspan=\"100%\">";
 	log_error_render();
@@ -736,7 +742,7 @@ if ($_SESSION["error"]["message"])
 }
 else
 {
-	if ($_SESSION["notification"]["message"])
+	if (isset($_SESSION["notification"]["message"]))
 	{
 		print "<tr><td>";
 		log_notification_render();

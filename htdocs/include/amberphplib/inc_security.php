@@ -61,7 +61,7 @@ function security_localphp($url)
 function security_form_input($expression, $valuename, $numchars, $errormsg)
 {
 	// get post data
-	$input = $_POST[$valuename];
+	$input = withdefault($_POST, $valuename, '');
 	
 	// if there is a help message set, delete the content
 	if (isset($_POST[ $valuename ."_helpmessagestatus"]))

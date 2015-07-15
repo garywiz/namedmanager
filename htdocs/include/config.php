@@ -29,6 +29,8 @@ $GLOBALS["config"]["app_version"]		= "1.9.0";
 // define the schema version required
 $GLOBALS["config"]["schema_version"]		= "20150416";
 
+// set this to something like :8443 if you want to change the https port
+$GLOBALS["config"]["https_port"]        = "";
 
 
 /*
@@ -64,7 +66,11 @@ else
 /*
 	Inherit User Configuration
 */
-include("config-settings.php");
+if (getenv('NDM_CONFIG_SETTINGS')) {
+    include(getenv('NDM_CONFIG_SETTINGS'));
+} else {
+    include('config-settings.php');
+}
 
 
 /*

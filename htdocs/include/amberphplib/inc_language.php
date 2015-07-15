@@ -146,11 +146,14 @@ function lang_trans($label)
 */
 function language_translate($language, $label_array)
 {
+    $result = array();
+
 	log_write("warning", "language", "Executing language_translate($language, label_array) -- DEPRECATED function");
 	
-	if (!$language || !$label_array)
+	if (!$language || !$label_array) {
 		print "Warning: Invalid input received for function language_translate<br>";
-	
+        return $result;
+    }
 
 	// store labels to fetch from DB in here
 	$label_fetch_array = array();

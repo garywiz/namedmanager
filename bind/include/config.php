@@ -32,7 +32,11 @@ $_SESSION["mode"]	= "cli";
 /*
 	Inherit User Configuration
 */
-require("config-settings.php");
+if (getenv('NDM_BIND_CONFIG_SETTINGS')) {
+    include(getenv('NDM_BIND_CONFIG_SETTINGS'));
+} else {
+    include('config-settings.php');
+}
 
 
 /*
