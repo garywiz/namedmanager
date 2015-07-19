@@ -142,8 +142,6 @@ class api_namedmanager
 
 	function log_write($timestamp, $log_type, $log_contents)
 	{
-		log_write("debug", "api_namedmanager", "Executing get_customer_from_by_code($code_customer)");
-
 		if ($this->auth_online)
 		{
 			// refuse authentication if logging disabled
