@@ -64,6 +64,17 @@ else
 }
 
 	
+// set page title
+
+if (!isset($GLOBALS["config"]["page_title"])) {
+    $page_title = '<img src="images/namedmanager-logo.png" alt="NamedManager">';
+    $text_title = "NamedManager";
+} else {
+    $text_title = $GLOBALS["config"]["page_title"];
+    $page_title = '<div style="font-style: bold; font-size: 30px; color:white; vertical-align: middle; padding: 15px">' . 
+                $text_title . '</div>';
+}
+
 // perform security checks on the page
 // security_localphp prevents any nasties, and then we check the the page exists.
 $page_valid = 0;
@@ -109,7 +120,7 @@ else
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <html>
 <head>
-	<title>NamedManager</title>
+    <title><?php echo $text_title; ?></title>
 	<meta name="copyright" content="(C)Copyright 2010 Amberdms Ltd">
 	<link rel="shortcut icon" href="images/namedmanager.ico" />
 
@@ -164,7 +175,7 @@ if (isset($page_obj->requires["javascript"]))
 	<td bgcolor="#2f5da8" style="border: 1px #747474 dashed;">
 		<table width="100%">
 		<tr>
-			<td width="50%" align="left"><img src="images/namedmanager-logo.png" alt="NamedManager"></td>
+        <td width="50%" align="left"><?php echo $page_title; ?></td>
 			<td width="50%" align="right" valign="top">
 			<?php
 

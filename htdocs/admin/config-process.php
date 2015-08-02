@@ -101,7 +101,7 @@ if (user_permissions_get("namedadmins"))
 	/*
 		Process Data
 	*/
-	if ($_SESSION["error"]["message"])
+	if (isset($_SESSION["error"]["message"]))
 	{
 		$_SESSION["error"]["form"]["config"] = "failed";
 		header("Location: ../index.php?page=admin/config.php");

@@ -83,7 +83,10 @@ class page_output
 	{
 		// heading
 		print "<h3>SYSTEM LOGIN:</h3>";
-		print "<p>Please enter your LDAP username and password to login:</p>";
+        if (isset($GLOBALS["config"]["ldap_host"]))
+            print "<p>Please enter your LDAP username and password to login:</p>";
+        else
+            print "<p>Please enter your username and password to login:</p>";
 
 		// display the form
 		$this->obj_form->render_form();

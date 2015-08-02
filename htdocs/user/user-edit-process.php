@@ -178,7 +178,7 @@ if (user_permissions_get("namedadmins"))
 
 
 			// commit/rollback
-			if ($_SESSION["error"]["message"])
+			if (isset($_SESSION["error"]["message"]))
 			{
 				$sql_obj->trans_rollback();
 
