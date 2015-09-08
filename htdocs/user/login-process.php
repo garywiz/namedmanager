@@ -84,7 +84,7 @@ else
 
 		// if no errors were set for other reasons (eg: the user forgetting to input any password at all)
 		// then display the incorrect username/password error.
-		if (!$_SESSION["error"]["message"])
+		if (!isset($_SESSION["error"]["message"]))
 		{
 			$_SESSION["error"]["message"][] = "That username and/or password is invalid!";
 			$_SESSION["error"]["username_namedmanager-error"] = 1;
